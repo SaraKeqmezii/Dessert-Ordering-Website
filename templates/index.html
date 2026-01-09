@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+
+{% block title %}Ëmbëlsira Shqiptare - Kryefaqja{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Ëmbëlsira të Shijshme<br>për Çdo Rast</h1>
+            <p>Porositni torta, cupcakes dhe ëmbëlsira tradicionale të bëra me dashuri dhe përbërës të freskët. Dërgim falas në të gjithë Prishtinën!</p>
+            <a href="{{ url_for('products') }}" class="btn btn-primary-custom btn-lg me-3">
+                <i class="fas fa-shopping-bag me-2"></i>Shiko Produktet
+            </a>
+            <a href="{{ url_for('contact') }}" class="btn btn-outline-light btn-lg">
+                <i class="fas fa-phone me-2"></i>Na Kontaktoni
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <i class="fas fa-truck"></i>
+                    <h4>Dërgim Falas</h4>
+                    <p>Dërgim falas për porosi mbi 2000 Lekë në të gjithë Prishtinën</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Përbërës Freskët</h4>
+                    <p>Përdorim vetëm përbërës të freskët dhe cilësorë</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <i class="fas fa-paint-brush"></i>
+                    <h4>Dizajn të Personalizuar</h4>
+                    <p>Krijojmë torta sipas dëshirës suaj</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="section-title">
+            <h2>Produktet Tona të Veçanta</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="row g-4">
+            {% for product in featured_products %}
+            <div class="col-lg-3 col-md-6">
+                <div class="product-card">
+                    <img src="https://source.unsplash.com/400x300/?{{ product.name|replace(' ', '-') }},dessert,cake" alt="{{ product.name }}">
+                    <div class="card-body">
+                        <span class="category-badge mb-2 d-inline-block">
+                            {% if product.category == 'torta' %}Tortë
+                            {% elif product.category == 'cupcakes' %}Cupcakes
+                            {% elif product.category == 'biskota' %}Biskota
+                            {% else %}Tradicionale{% endif %}
+                        </span>
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="text-muted small">{{ product.description[:60] }}...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="price">{{ product.price }} Lekë</span>
+                            <a href="{{ url_for('product_detail', product_id=product.id) }}" class="btn btn-sm btn-outline-custom">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-5">
+            <a href="{{ url_for('products') }}" class="btn btn-primary-custom btn-lg">
+                <i class="fas fa-th-large me-2"></i>Shiko të Gjitha Produktet
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Baker" class="img-fluid rounded-4 shadow">
+            </div>
+            <div class="col-lg-6">
+                <h2 class="mb-4">Pse të Zgjidhni Ne?</h2>
+                <div class="d-flex mb-3">
+                    <div class="me-3">
+                        <i class="fas fa-check-circle fa-2x" style="color: var(--primary-color);"></i>
+                    </div>
+                    <div>
+                        <h5>Përvojë mbi 10 Vjet</h5>
+                        <p class="text-muted">Kemi përvojë të gjatë në krijimin e ëmbëlsirave të shijshme.</p>
+                    </div>
+                </div>
+                <div class="d-flex mb-3">
+                    <div class="me-3">
+                        <i class="fas fa-check-circle fa-2x" style="color: var(--primary-color);"></i>
+                    </div>
+                    <div>
+                        <h5>Receta Origjinale</h5>
+                        <p class="text-muted">Përdorim receta familjare dhe të reja për një shije unike.</p>
+                    </div>
+                </div>
+                <div class="d-flex mb-3">
+                    <div class="me-3">
+                        <i class="fas fa-check-circle fa-2x" style="color: var(--primary-color);"></i>
+                    </div>
+                    <div>
+                        <h5>Dërgim i Sigurt</h5>
+                        <p class="text-muted">Paketojmë me kujdes për të garantuar cilësinë e produktit.</p>
+                    </div>
+                </div>
+                <a href="{{ url_for('about') }}" class="btn btn-primary-custom mt-3">
+                    <i class="fas fa-arrow-right me-2"></i>Mëso Më Shumë
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="section-title">
+            <h2>Çfarë Thonë Klientët</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="testimonial-card p-4 bg-light rounded-4 h-100">
+                    <div class="d-flex mb-3">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <p class="mb-3">"Torta e çokollatës ishte thjesht fantastike! E gjithë familja e pëlqeu shumë. Faleminderit!"</p>
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                            <span>MK</span>
+                        </div>
+                        <div class="ms-3">
+                            <h6 class="mb-0">Maria K.</h6>
+                            <small class="text-muted">Tiranë</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card p-4 bg-light rounded-4 h-100">
+                    <div class="d-flex mb-3">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <p class="mb-3">"Porositëm tortën për ditëlindje dhe erdhi pikërisht siç e dëshironim. Shërbim i shkëlqyer!"</p>
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                            <span>EH</span>
+                        </div>
+                        <div class="ms-3">
+                            <h6 class="mb-0">Elton H.</h6>
+                            <small class="text-muted">Durrës</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card p-4 bg-light rounded-4 h-100">
+                    <div class="d-flex mb-3">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star-half-alt text-warning"></i>
+                    </div>
+                    <p class="mb-3">"Bakllava e tyre është më e mira që kam provuar! Shije tradicionale dhe autentike."</p>
+                    <div class="d-flex align-items-center">
+                        <div class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                            <span>AB</span>
+                        </div>
+                        <div class="ms-3">
+                            <h6 class="mb-0">Ardita B.</h6>
+                            <small class="text-muted">Tiranë</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));">
+    <div class="container text-center text-white">
+        <h2 class="mb-3">Keni një Rast Special?</h2>
+        <p class="mb-4 lead">Na kontaktoni për porosi të personalizuara. Krijojmë torta unike për dasma, ditëlindje dhe çdo festë tjetër!</p>
+        <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg me-3">
+            <i class="fas fa-phone me-2"></i>Na Telefononi
+        </a>
+        <a href="{{ url_for('products') }}" class="btn btn-outline-light btn-lg">
+            <i class="fas fa-shopping-cart me-2"></i>Porosit Tani
+        </a>
+    </div>
+</section>
+{% endblock %}

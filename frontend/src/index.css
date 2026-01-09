@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff5f7;
+  color: #5c3a45;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+.btn-primary {
+  @apply bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105;
+}
+
+.btn-outline {
+  @apply border-2 border-primary text-primary px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:bg-primary hover:text-white;
+}
+
+.card {
+  @apply bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2;
+}
+
+.section-title {
+  @apply text-center mb-12;
+}
+
+.section-title h2 {
+  @apply text-4xl font-bold text-dark mb-4;
+}
+
+.section-title .divider {
+  @apply w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded;
+}

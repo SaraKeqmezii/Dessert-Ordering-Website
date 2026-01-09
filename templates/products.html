@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}Produktet - Ëmbëlsira{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="page-header">
+    <div class="container">
+        <h1><i class="fas fa-cookie-bite me-3"></i>Produktet Tona</h1>
+        <p class="mb-0">Zbuloni koleksionin tonë të ëmbëlsirave të shijshme</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <!-- Category Filter -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="{{ url_for('products', category='all') }}" 
+                   class="btn {{ 'btn-primary-custom' if category == 'all' else 'btn-outline-custom' }}">
+                    <i class="fas fa-th-large me-2"></i>Të Gjitha
+                </a>
+                <a href="{{ url_for('products', category='torta') }}" 
+                   class="btn {{ 'btn-primary-custom' if category == 'torta' else 'btn-outline-custom' }}">
+                    <i class="fas fa-birthday-cake me-2"></i>Torta
+                </a>
+                <a href="{{ url_for('products', category='cupcakes') }}" 
+                   class="btn {{ 'btn-primary-custom' if category == 'cupcakes' else 'btn-outline-custom' }}">
+                    <i class="fas fa-cookie me-2"></i>Cupcakes
+                </a>
+                <a href="{{ url_for('products', category='biskota') }}" 
+                   class="btn {{ 'btn-primary-custom' if category == 'biskota' else 'btn-outline-custom' }}">
+                    <i class="fas fa-stroopwafel me-2"></i>Biskota
+                </a>
+                <a href="{{ url_for('products', category='embelsira_tradicionale') }}" 
+                   class="btn {{ 'btn-primary-custom' if category == 'embelsira_tradicionale' else 'btn-outline-custom' }}">
+                    <i class="fas fa-heart me-2"></i>Tradicionale
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="row g-4">
+        {% if products %}
+            {% for product in products %}
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="product-card">
+                    <img src="https://source.unsplash.com/400x300/?{{ product.name|replace(' ', '-') }},dessert,cake,pastry" alt="{{ product.name }}">
+                    <div class="card-body">
+                        <span class="category-badge mb-2 d-inline-block">
+                            {% if product.category == 'torta' %}Tortë
+                            {% elif product.category == 'cupcakes' %}Cupcakes
+                            {% elif product.category == 'biskota' %}Biskota
+                            {% else %}Tradicionale{% endif %}
+                        </span>
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="text-muted small mb-3">{{ product.description[:50] }}...</p>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="price">{{ product.price }} Lekë</span>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <a href="{{ url_for('product_detail', product_id=product.id) }}" class="btn btn-outline-custom btn-sm">
+                                <i class="fas fa-eye me-2"></i>Shiko Detajet
+                            </a>
+                            <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="POST" class="d-grid">
+                                <input type="hidden" name="quantity" value="1">
+                                <button type="submit" class="btn btn-primary-custom btn-sm">
+                                    <i class="fas fa-cart-plus me-2"></i>Shto në Shportë
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12 text-center py-5">
+                <i class="fas fa-search fa-4x text-muted mb-4"></i>
+                <h4>Nuk u gjetën produkte</h4>
+                <p class="text-muted">Provoni një kategori tjetër ose shikoni të gjitha produktet.</p>
+                <a href="{{ url_for('products', category='all') }}" class="btn btn-primary-custom">
+                    Shiko të Gjitha
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

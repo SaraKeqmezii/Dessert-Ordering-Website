@@ -1,0 +1,224 @@
+{% extends 'base.html' %}
+
+{% block title %}Kontakt - Ëmbëlsira{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="page-header">
+    <div class="container">
+        <h1><i class="fas fa-envelope me-3"></i>Na Kontaktoni</h1>
+        <p class="mb-0">Jemi këtu për t'ju ndihmuar me çdo pyetje</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row g-5">
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-body p-5">
+                    <h3 class="mb-4">Dërgoni një Mesazh</h3>
+                    <form action="{{ url_for('contact') }}" method="POST">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Emri Juaj *</label>
+                            <input type="text" class="form-control" id="name" name="name" required 
+                                   placeholder="P.sh. Arta Hoxha">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email *</label>
+                            <input type="email" class="form-control" id="email" name="email" required 
+                                   placeholder="P.sh. arta@email.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Telefoni</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" 
+                                   placeholder="P.sh. +355 69 123 4567">
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subjekti *</label>
+                            <select class="form-control" id="subject" name="subject" required>
+                                <option value="">Zgjidhni një subjekt</option>
+                                <option value="order">Pyetje rreth porosive</option>
+                                <option value="custom">Porosi e personalizuar</option>
+                                <option value="event">Ngjarje / Evente</option>
+                                <option value="feedback">Feedback / Sugjerime</option>
+                                <option value="other">Tjetër</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="form-label">Mesazhi Juaj *</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required 
+                                      placeholder="Shkruani mesazhin tuaj këtu..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary-custom btn-lg w-100">
+                            <i class="fas fa-paper-plane me-2"></i>Dërgo Mesazhin
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <!-- Contact Info -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-body p-5">
+                    <h3 class="mb-4">Informacione Kontakti</h3>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center" 
+                                 style="width: 60px; height: 60px; background: var(--accent-color);">
+                                <i class="fas fa-map-marker-alt fa-lg" style="color: var(--primary-color);"></i>
+                            </div>
+                        </div>
+                        <div class="ms-4">
+                            <h5>Adresa</h5>
+                            <p class="text-muted mb-0">Rruga Nëna Terezë, Nr. 10<br>Prishtinë, Kosovë</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex mb-4">
+                        <div class="flex-shrink-0">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center" 
+                                 style="width: 60px; height: 60px; background: var(--accent-color);">
+                                <i class="fas fa-phone fa-lg" style="color: var(--primary-color);"></i>
+                            </div>
+                        </div>
+                        <div class="ms-4">
+                            <h5>Telefoni</h5>
+                            <p class="text-muted mb-0">
+                                <a href="tel:+38344123456" class="text-decoration-none">+383 44 123 456</a><br>
+                                <a href="tel:+38338234567" class="text-decoration-none">+383 38 234 567</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="flex-shrink-0">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center" 
+                                 style="width: 60px; height: 60px; background: var(--accent-color);">
+                                <i class="fas fa-clock fa-lg" style="color: var(--primary-color);"></i>
+                            </div>
+                        </div>
+                        <div class="ms-4">
+                            <h5>Orari i Punës</h5>
+                            <p class="text-muted mb-0">
+                                E Hënë - E Premte: 08:00 - 20:00<br>
+                                E Shtunë: 09:00 - 18:00<br>
+                                E Diel: 10:00 - 16:00
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Media -->
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <h5 class="mb-3">Na Ndiqni në Rrjetet Sociale</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-outline-primary rounded-circle" style="width: 50px; height: 50px;">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-danger rounded-circle" style="width: 50px; height: 50px;">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-success rounded-circle" style="width: 50px; height: 50px;">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-info rounded-circle" style="width: 50px; height: 50px;">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map -->
+    <div class="mt-5">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+            <div class="ratio ratio-21x9">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2934.4714458076896!2d21.1594!3d42.6629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13549ee605110927%3A0x9365bfdf385eb95a!2sPrishtina%2C%20Kosovo!5e0!3m2!1sen!2s!4v1640000000000!5m2!1sen!2s" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FAQ Section -->
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="section-title">
+            <h2>Pyetje të Shpeshta</h2>
+            <div class="divider"></div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                Sa kohë përpara duhet të porosis?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Rekomandojmë të porosisni së paku 24-48 orë përpara, veçanërisht për tortat e personalizuara. 
+                                Për ngjarje të mëdha si dasma, rekomandojmë 1-2 javë përpara.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                A bëni dërgim jashtë Tiranës?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Po, bëjmë dërgim në Ferizaj, Mitrovicë, Gjilan dhe qytete të tjera pranë Prishtinës. 
+                                Tarifat e dërgimit varen nga distanca. Na kontaktoni për detaje.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-0 mb-3 rounded-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                A mund të bëj një tortë të personalizuar?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Sigurisht! Specializohemi në torta të personalizuara për ditëlindje, dasma, 
+                                dhe çdo rast tjetër special. Na dërgoni idenë tuaj dhe ne do ta realizojmë!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-0 rounded-3 shadow-sm">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                Cilat janë metodat e pagesës?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Pranojmë pagesë cash në dorëzim (Cash on Delivery) dhe transfer bankar. 
+                                Për porosi të mëdha, kërkojmë një paradhënie 50%.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

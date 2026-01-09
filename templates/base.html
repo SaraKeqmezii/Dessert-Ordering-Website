@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ëmbëlsira Shqiptare{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #d4a574;
+            --secondary-color: #8b5a2b;
+            --accent-color: #f5e6d3;
+            --dark-color: #3d2914;
+            --light-color: #faf7f2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, var(--secondary-color), var(--dark-color));
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color) !important;
+        }
+
+        .navbar-brand i {
+            color: var(--primary-color);
+        }
+
+        .nav-link {
+            color: var(--accent-color) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .cart-icon {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(61, 41, 20, 0.7), rgba(61, 41, 20, 0.7)),
+                        url('https://images.unsplash.com/photo-1486427944544-d2c6e300d7e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Buttons */
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 165, 116, 0.4);
+            background: linear-gradient(135deg, var(--secondary-color), var(--dark-color));
+            color: white;
+        }
+
+        .btn-outline-custom {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Product Cards */
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-card .card-body {
+            padding: 1.5rem;
+        }
+
+        .product-card .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--dark-color);
+        }
+
+        .product-card .price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .product-card .category-badge {
+            background: var(--accent-color);
+            color: var(--secondary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-title .divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Features */
+        .feature-box {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-box i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-box h4 {
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark-color), var(--secondary-color));
+            color: var(--accent-color);
+            padding: 4rem 0 2rem;
+        }
+
+        footer h5 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Alerts */
+        .alert {
+            border-radius: 15px;
+            border: none;
+        }
+
+        /* Forms */
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            padding: 12px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(212, 165, 116, 0.25);
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        /* Cart Table */
+        .cart-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .cart-table th {
+            background: var(--accent-color);
+            color: var(--dark-color);
+            font-weight: 600;
+            border: none;
+        }
+
+        .cart-table td {
+            vertical-align: middle;
+            border-color: #f0f0f0;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--dark-color));
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Quantity Input */
+        .quantity-input {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-input button {
+            width: 35px;
+            height: 35px;
+            border: 2px solid var(--primary-color);
+            background: white;
+            color: var(--primary-color);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-input button:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .quantity-input input {
+            width: 60px;
+            text-align: center;
+            border: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <i class="fas fa-birthday-cake me-2"></i>Ëmbëlsira
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">
+                            <i class="fas fa-home me-1"></i> Kryefaqja
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('products') }}">
+                            <i class="fas fa-cookie-bite me-1"></i> Produktet
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">
+                            <i class="fas fa-info-circle me-1"></i> Rreth Nesh
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('contact') }}">
+                            <i class="fas fa-envelope me-1"></i> Kontakt
+                        </a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a class="nav-link cart-icon" href="{{ url_for('cart') }}">
+                            <i class="fas fa-shopping-cart fa-lg"></i>
+                            {% if cart_count > 0 %}
+                            <span class="cart-badge">{{ cart_count }}</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    <div class="container mt-3">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'success' if category == 'success' else 'warning' if category == 'warning' else 'info' if category == 'info' else 'danger' }} alert-dismissible fade show" role="alert">
+                        <i class="fas fa-{{ 'check-circle' if category == 'success' else 'exclamation-triangle' if category == 'warning' else 'info-circle' if category == 'info' else 'times-circle' }} me-2"></i>
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- Main Content -->
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5><i class="fas fa-birthday-cake me-2"></i>Ëmbëlsira</h5>
+                    <p>Krijojmë ëmbëlsira të shijshme dhe të personalizuara për çdo rast special. Me dashuri dhe pasion që nga viti 2020.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Lidhje të Shpejta</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="{{ url_for('index') }}"><i class="fas fa-angle-right me-2"></i>Kryefaqja</a></li>
+                        <li class="mb-2"><a href="{{ url_for('products') }}"><i class="fas fa-angle-right me-2"></i>Produktet</a></li>
+                        <li class="mb-2"><a href="{{ url_for('about') }}"><i class="fas fa-angle-right me-2"></i>Rreth Nesh</a></li>
+                        <li class="mb-2"><a href="{{ url_for('contact') }}"><i class="fas fa-angle-right me-2"></i>Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5>Kategoritë</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="{{ url_for('products', category='torta') }}"><i class="fas fa-angle-right me-2"></i>Torta</a></li>
+                        <li class="mb-2"><a href="{{ url_for('products', category='cupcakes') }}"><i class="fas fa-angle-right me-2"></i>Cupcakes</a></li>
+                        <li class="mb-2"><a href="{{ url_for('products', category='biskota') }}"><i class="fas fa-angle-right me-2"></i>Biskota</a></li>
+                        <li class="mb-2"><a href="{{ url_for('products', category='embelsira_tradicionale') }}"><i class="fas fa-angle-right me-2"></i>Tradicionale</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5>Kontakt</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Rruga Nëna Terezë, Nr. 10</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i>+383 44 123 456</li>
+                        <li class="mb-2"><i class="fas fa-clock me-2"></i>E Hënë - E Shtunë: 08:00 - 20:00</li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1);">
+            <div class="text-center py-3">
+                <p class="mb-0">&copy; 2024 Ëmbëlsira. Të gjitha të drejtat e rezervuara.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

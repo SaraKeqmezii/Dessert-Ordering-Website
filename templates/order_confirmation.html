@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}Porosia u Konfirmua - Ëmbëlsira{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow rounded-4 text-center p-5">
+                <div class="card-body">
+                    <div class="mb-4">
+                        <div class="rounded-circle d-inline-flex align-items-center justify-content-center" 
+                             style="width: 120px; height: 120px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));">
+                            <i class="fas fa-check fa-4x text-white"></i>
+                        </div>
+                    </div>
+                    
+                    <h1 class="mb-3" style="color: var(--dark-color);">Porosia u Pranua!</h1>
+                    <p class="lead text-muted mb-4">
+                        Faleminderit që zgjodhët Ëmbëlsira! Porosia juaj u regjistrua me sukses.
+                    </p>
+
+                    <div class="bg-light rounded-4 p-4 mb-4 text-start">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <h6 class="text-muted mb-1">Numri i Porosisë:</h6>
+                                <h4 style="color: var(--secondary-color);">#{{ order.id }}</h4>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h6 class="text-muted mb-1">Data e Porosisë:</h6>
+                                <h5>{{ order.created_at }}</h5>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <h6 class="text-muted mb-1"><i class="fas fa-user me-1"></i> Emri:</h6>
+                                <p class="mb-0">{{ order.customer.name }}</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h6 class="text-muted mb-1"><i class="fas fa-phone me-1"></i> Telefoni:</h6>
+                                <p class="mb-0">{{ order.customer.phone }}</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h6 class="text-muted mb-1"><i class="fas fa-envelope me-1"></i> Email:</h6>
+                                <p class="mb-0">{{ order.customer.email }}</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h6 class="text-muted mb-1"><i class="fas fa-calendar me-1"></i> Data e Dërgimit:</h6>
+                                <p class="mb-0">{{ order.delivery_date }}</p>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <h6 class="text-muted mb-1"><i class="fas fa-map-marker-alt me-1"></i> Adresa:</h6>
+                                <p class="mb-0">{{ order.customer.address }}</p>
+                            </div>
+                            {% if order.notes %}
+                            <div class="col-12">
+                                <h6 class="text-muted mb-1"><i class="fas fa-sticky-note me-1"></i> Shënime:</h6>
+                                <p class="mb-0">{{ order.notes }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="card border mb-4">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0"><i class="fas fa-shopping-bag me-2"></i>Produktet e Porositura</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <table class="table mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Produkti</th>
+                                        <th class="text-center">Sasia</th>
+                                        <th class="text-end">Çmimi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in order.items %}
+                                    <tr>
+                                        <td>{{ item.name }}</td>
+                                        <td class="text-center">{{ item.quantity }}</td>
+                                        <td class="text-end">{{ item.price * item.quantity }} Lekë</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr class="table-light">
+                                        <td colspan="2" class="text-end fw-bold">Totali:</td>
+                                        <td class="text-end fw-bold" style="color: var(--secondary-color);">
+                                            {{ order.total }} Lekë
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info mb-4">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>Çfarë ndodh tani?</strong><br>
+                        Do të kontaktoheni brenda 1-2 orëve për të konfirmuar porosinë tuaj. 
+                        Nëse keni pyetje, mund të na telefononi në <strong>+355 69 123 4567</strong>.
+                    </div>
+
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a href="{{ url_for('index') }}" class="btn btn-primary-custom btn-lg">
+                            <i class="fas fa-home me-2"></i>Kthehu në Kryefaqje
+                        </a>
+                        <a href="{{ url_for('products') }}" class="btn btn-outline-custom btn-lg">
+                            <i class="fas fa-shopping-bag me-2"></i>Vazhdo Blerjen
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Torte Çokollatë",
+    "description": "Tortë e shijshme me çokollatë belge dhe krem të butë",
+    "price": 2500,
+    "image": "chocolate_cake.jpg",
+    "category": "torta"
+  },
+  {
+    "id": 2,
+    "name": "Torte Fruta",
+    "description": "Tortë me fruta të freskëta stinore dhe krem vanilje",
+    "price": 2800,
+    "image": "fruit_cake.jpg",
+    "category": "torta"
+  },
+  {
+    "id": 3,
+    "name": "Bakllavë",
+    "description": "Bakllavë tradicionale me arra dhe mjaltë",
+    "price": 800,
+    "image": "baklava.jpg",
+    "category": "embelsira_tradicionale"
+  },
+  {
+    "id": 4,
+    "name": "Trilece",
+    "description": "Trilece kremoz me karamel të freskët",
+    "price": 600,
+    "image": "trilece.jpg",
+    "category": "embelsira_tradicionale"
+  },
+  {
+    "id": 5,
+    "name": "Cupcakes",
+    "description": "Cupcakes me krem të ndryshëm - 6 copë",
+    "price": 1200,
+    "image": "cupcakes.jpg",
+    "category": "cupcakes"
+  },
+  {
+    "id": 6,
+    "name": "Makaron",
+    "description": "Makaron francez me shije të ndryshme - 12 copë",
+    "price": 1500,
+    "image": "macarons.jpg",
+    "category": "biskota"
+  },
+  {
+    "id": 7,
+    "name": "Cheesecake",
+    "description": "Cheesecake klasik me dredhëza",
+    "price": 2200,
+    "image": "cheesecake.jpg",
+    "category": "torta"
+  },
+  {
+    "id": 8,
+    "name": "Profiterol",
+    "description": "Profiterol me krem dhe çokollatë - 8 copë",
+    "price": 900,
+    "image": "profiteroles.jpg",
+    "category": "embelsira_tradicionale"
+  }
+]

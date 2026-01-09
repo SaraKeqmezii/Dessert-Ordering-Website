@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout - Ëmbëlsira{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="page-header">
+    <div class="container">
+        <h1><i class="fas fa-credit-card me-3"></i>Përfundo Porosinë</h1>
+        <p class="mb-0">Plotësoni të dhënat për të përfunduar porosinë tuaj</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-7 mb-4">
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <h4 class="mb-4"><i class="fas fa-user me-2"></i>Të Dhënat e Klientit</h4>
+                    
+                    <form action="{{ url_for('checkout') }}" method="POST">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Emri dhe Mbiemri *</label>
+                                <input type="text" class="form-control" id="name" name="name" required 
+                                       placeholder="P.sh. Arta Hoxha">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">Numri i Telefonit *</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required 
+                                       placeholder="P.sh. +355 69 123 4567">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email *</label>
+                            <input type="email" class="form-control" id="email" name="email" required 
+                                   placeholder="P.sh. arta@email.com">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Adresa e Plotë *</label>
+                            <textarea class="form-control" id="address" name="address" rows="2" required 
+                                      placeholder="P.sh. Rruga Myslym Shyri, Nr. 15, Ap. 3, Tiranë"></textarea>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <h4 class="mb-4"><i class="fas fa-truck me-2"></i>Detajet e Dërgimit</h4>
+
+                        <div class="mb-3">
+                            <label for="delivery_date" class="form-label">Data e Dërgimit të Dëshiruar *</label>
+                            <input type="date" class="form-control" id="delivery_date" name="delivery_date" required
+                                   min="{{ 'now'|string }}">
+                            <small class="text-muted">
+                                <i class="fas fa-info-circle me-1"></i>
+                                Zgjidhni datën kur dëshironi të merrni porosinë (minimum 24 orë përpara)
+                            </small>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="notes" class="form-label">Shënime të Veçanta (Opsionale)</label>
+                            <textarea class="form-control" id="notes" name="notes" rows="3" 
+                                      placeholder="P.sh. Mesazh mbi tortë, alergji, udhëzime speciale për dërgimin..."></textarea>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <h4 class="mb-4"><i class="fas fa-wallet me-2"></i>Metoda e Pagesës</h4>
+                        
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="radio" name="payment" id="cash" value="cash" checked>
+                            <label class="form-check-label" for="cash">
+                                <i class="fas fa-money-bill-wave me-2 text-success"></i>
+                                Pagesë me Para në Dorë (Cash on Delivery)
+                            </label>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="radio" name="payment" id="bank" value="bank">
+                            <label class="form-check-label" for="bank">
+                                <i class="fas fa-university me-2 text-primary"></i>
+                                Transfer Bankar
+                            </label>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="terms" required>
+                            <label class="form-check-label" for="terms">
+                                Pranoj <a href="#" class="text-decoration-none">kushtet e shërbimit</a> dhe 
+                                <a href="#" class="text-decoration-none">politikën e privatësisë</a> *
+                            </label>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary-custom btn-lg">
+                                <i class="fas fa-check-circle me-2"></i>Konfirmo Porosinë
+                            </button>
+                            <a href="{{ url_for('cart') }}" class="btn btn-outline-custom">
+                                <i class="fas fa-arrow-left me-2"></i>Kthehu te Shporta
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-5">
+            <!-- Order Summary -->
+            <div class="card border-0 shadow-sm rounded-4 sticky-top" style="top: 100px;">
+                <div class="card-header bg-white border-0 pt-4 px-4">
+                    <h4 class="mb-0"><i class="fas fa-shopping-bag me-2"></i>Përmbledhja e Porosisë</h4>
+                </div>
+                <div class="card-body px-4">
+                    <div class="order-items mb-4">
+                        {% for item in cart %}
+                        <div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
+                            <div class="d-flex align-items-center">
+                                <img src="https://source.unsplash.com/60x60/?{{ item.name|replace(' ', '-') }},dessert" 
+                                     alt="{{ item.name }}" 
+                                     class="rounded me-3" 
+                                     style="width: 50px; height: 50px; object-fit: cover;">
+                                <div>
+                                    <h6 class="mb-0 small">{{ item.name }}</h6>
+                                    <small class="text-muted">x{{ item.quantity }}</small>
+                                </div>
+                            </div>
+                            <span class="fw-bold">{{ item.price * item.quantity }} Lekë</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Nëntotali:</span>
+                        <span>{{ total }} Lekë</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="text-muted">Dërgimi:</span>
+                        <span class="{% if total >= 2000 %}text-success fw-bold{% endif %}">
+                            {% if total >= 2000 %}FALAS{% else %}200 Lekë{% endif %}
+                        </span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <span class="h5 mb-0">Totali:</span>
+                        <span class="h4 mb-0" style="color: var(--secondary-color); font-weight: 700;">
+                            {% if total >= 2000 %}{{ total }}{% else %}{{ total + 200 }}{% endif %} Lekë
+                        </span>
+                    </div>
+                </div>
+
+                <div class="card-footer bg-light border-0 p-4 rounded-bottom">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-lock me-2 text-success"></i>
+                        <small>Pagesa e sigurt dhe e mbrojtur</small>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-phone me-2 text-primary"></i>
+                        <small>Keni pyetje? Na telefononi: +383 44 123 456</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Set minimum date to tomorrow
+    const today = new Date();
+    today.setDate(today.getDate() + 1);
+    const minDate = today.toISOString().split('T')[0];
+    document.getElementById('delivery_date').setAttribute('min', minDate);
+</script>
+{% endblock %}
