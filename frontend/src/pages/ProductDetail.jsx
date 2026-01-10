@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { FaCartPlus, FaArrowLeft, FaShoppingCart, FaCheckCircle, FaTruck, FaClock, FaMapMarkerAlt, FaMinus, FaPlus } from 'react-icons/fa'
 import { useCart } from '../context/CartContext'
 
-const allProducts = [
+const defaultProducts = [
   {
     id: 1,
     name: "Torte Çokollatë",
@@ -83,8 +83,24 @@ function ProductDetail() {
   const { addToCart } = useCart()
   const [quantity, setQuantity] = useState(1)
   const [added, setAdded] = useState(false)
+  const [product, setProduct] = useState(null)
+  const [loading, setLoading] = useState(true)
 
-  const product = allProducts.find(p => p.id === parseInt(id))
+  useEffect(() => {
+    const savedProducts = localStorage.getItem('adminProducts')
+    const productsData = savedProducts ? JSON.parse(savedProducts) : defaultProducts
+    const foundProduct = productsData.find(p => p.id === parseInt(id))
+    setProduct(foundProduct)
+    setLoading(false)
+  }, [id])
+
+  if (loading) {
+    return (
+      <div className="container mx-auto px-4 py-16 text-center">
+        <p>Duke ngarkuar...</p>
+      </div>
+    )
+  }
 
   if (!product) {
     return (

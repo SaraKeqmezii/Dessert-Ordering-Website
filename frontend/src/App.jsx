@@ -9,6 +9,7 @@ import Checkout from './pages/Checkout'
 import OrderConfirmation from './pages/OrderConfirmation'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import Admin from './pages/Admin'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/order-confirmation/:id" element={<OrderConfirmation />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </main>
       <Footer />

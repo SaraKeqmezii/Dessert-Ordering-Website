@@ -4,7 +4,7 @@ import { FaBirthdayCake, FaCookie, FaHeart, FaThLarge } from 'react-icons/fa'
 import { GiCupcake } from 'react-icons/gi'
 import ProductCard from '../components/ProductCard'
 
-const allProducts = [
+const defaultProducts = [
   {
     id: 1,
     name: "Torte Çokollatë",
@@ -82,7 +82,14 @@ const categories = [
 function Products() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || 'all')
-  const [products, setProducts] = useState(allProducts)
+  const [products, setProducts] = useState([])
+  const [allProducts, setAllProducts] = useState([])
+
+  useEffect(() => {
+    const savedProducts = localStorage.getItem('adminProducts')
+    const productsData = savedProducts ? JSON.parse(savedProducts) : defaultProducts
+    setAllProducts(productsData)
+  }, [])
 
   useEffect(() => {
     const category = searchParams.get('category') || 'all'
@@ -93,7 +100,7 @@ function Products() {
     } else {
       setProducts(allProducts.filter(p => p.category === category))
     }
-  }, [searchParams])
+  }, [searchParams, allProducts])
 
   const handleCategoryChange = (categoryId) => {
     setSearchParams({ category: categoryId })

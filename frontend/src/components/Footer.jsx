@@ -105,7 +105,7 @@ function Footer() {
         <hr className="border-white/10 mb-6" />
         
         <div className="text-center text-sm opacity-70">
-          <p>&copy; 2024 Ëmbëlsira. Të gjitha të drejtat e rezervuara.</p>
+          <p>&copy; 2026 Ëmbëlsira. Të gjitha të drejtat e rezervuara.</p>
         </div>
       </div>
     </footer>
