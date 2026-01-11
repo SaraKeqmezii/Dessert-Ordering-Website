@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { FaBirthdayCake, FaShoppingCart, FaBars, FaTimes, FaHome, FaCookieBite, FaInfoCircle, FaEnvelope } from 'react-icons/fa'
+import { FaShoppingCart, FaBars, FaTimes, FaHome, FaCookieBite, FaInfoCircle, FaEnvelope } from 'react-icons/fa'
+import { GiCupcake } from 'react-icons/gi'
 import { useCart } from '../context/CartContext'
 
 function Navbar() {
@@ -12,9 +13,17 @@ function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           
-          <Link to="/" className="flex items-center space-x-2">
-            <FaBirthdayCake className="text-primary text-3xl" />
-            <span className="font-display text-2xl font-bold text-accent">Ëmbëlsira</span>
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="relative">
+              <div className="w-12 h-12 bg-gradient-to-br from-primary to-pink-300 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <GiCupcake className="text-white text-2xl" />
+              </div>
+              <div className="absolute -top-1 -right-1 w-4 h-4 bg-accent rounded-full animate-pulse"></div>
+            </div>
+            <div className="flex flex-col">
+              <span className="font-display text-2xl font-bold text-white tracking-wide">Ëmbëlsira</span>
+              <span className="text-xs text-primary -mt-1 tracking-widest">PASTICERI</span>
+            </div>
           </Link>
 
           

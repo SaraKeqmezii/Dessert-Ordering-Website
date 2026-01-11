@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { FaBirthdayCake, FaFacebookF, FaInstagram, FaWhatsapp, FaMapMarkerAlt, FaPhone, FaClock, FaAngleRight } from 'react-icons/fa'
+import { FaFacebookF, FaInstagram, FaWhatsapp, FaMapMarkerAlt, FaPhone, FaClock, FaAngleRight } from 'react-icons/fa'
+import { GiCupcake } from 'react-icons/gi'
 
 function Footer() {
   return (
@@ -8,9 +9,14 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           
           <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <FaBirthdayCake className="text-primary text-2xl" />
-              <span className="font-display text-xl font-bold">Ëmbëlsira</span>
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-10 h-10 bg-gradient-to-br from-primary to-pink-300 rounded-full flex items-center justify-center">
+                <GiCupcake className="text-white text-xl" />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-display text-xl font-bold text-white">Ëmbëlsira</span>
+                <span className="text-xs text-primary -mt-1 tracking-widest">PASTICERI</span>
+              </div>
             </div>
             <p className="text-sm opacity-80 mb-4">
               Krijojmë ëmbëlsira të shijshme dhe të personalizuara për çdo rast special. Me dashuri dhe pasion që nga viti 2020.
