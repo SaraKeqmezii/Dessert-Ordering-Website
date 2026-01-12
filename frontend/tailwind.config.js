@@ -6,11 +6,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#e8a0b5',
-        secondary: '#c17a8e',
-        accent: '#f9e4d4',
-        dark: '#5c3a45',
-        light: '#fff5f7',
+        primary: '#D4A574',
+        secondary: '#5D4037',
+        accent: '#FFF8E7',
+        dark: '#3E2723',
+        light: '#FFFAF0',
       },
       fontFamily: {
         'display': ['Playfair Display', 'serif'],

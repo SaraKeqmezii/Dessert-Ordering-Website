@@ -64,7 +64,7 @@ function Home() {
       <section 
         className="relative min-h-[600px] flex items-center justify-center text-center text-white"
         style={{
-          background: 'linear-gradient(rgba(92, 58, 69, 0.75), rgba(193, 122, 142, 0.75)), url(https://images.unsplash.com/photo-1486427944544-d2c6e300d7e0?w=1920)',
+          background: 'linear-gradient(rgba(62, 39, 35, 0.75), rgba(93, 64, 55, 0.7)), url(https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1920)',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}

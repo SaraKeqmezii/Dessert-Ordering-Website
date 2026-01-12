@@ -15,18 +15,17 @@ function Navbar() {
           
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-br from-primary to-pink-300 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <div className="w-12 h-12 bg-gradient-to-br from-primary to-yellow-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                 <GiCupcake className="text-white text-2xl" />
               </div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-accent rounded-full animate-pulse"></div>
+              <div className="absolute -top-1 -right-1 w-4 h-4 bg-primary rounded-full animate-pulse"></div>
             </div>
             <div className="flex flex-col">
               <span className="font-display text-2xl font-bold text-white tracking-wide">Ëmbëlsira</span>
-              <span className="text-xs text-primary -mt-1 tracking-widest">PASTICERI</span>
+              <span className="text-xs text-primary -mt-1 tracking-widest">Mjellma's Cake</span>
             </div>
           </Link>
 
-          
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className="text-accent hover:text-primary transition-colors flex items-center gap-2">
               <FaHome /> Kryefaqja
@@ -50,7 +49,6 @@ function Navbar() {
             </Link>
           </div>
 
-          
           <button 
             className="md:hidden text-accent text-2xl"
             onClick={() => setIsOpen(!isOpen)}
@@ -59,7 +57,6 @@ function Navbar() {
           </button>
         </div>
 
-        
         {isOpen && (
           <div className="md:hidden pb-4">
             <div className="flex flex-col space-y-4">

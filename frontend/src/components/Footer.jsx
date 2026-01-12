@@ -10,12 +10,12 @@ function Footer() {
           
           <div>
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-pink-300 rounded-full flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-br from-primary to-yellow-600 rounded-full flex items-center justify-center">
                 <GiCupcake className="text-white text-xl" />
               </div>
               <div className="flex flex-col">
                 <span className="font-display text-xl font-bold text-white">Ëmbëlsira</span>
-                <span className="text-xs text-primary -mt-1 tracking-widest">PASTICERI</span>
+                <span className="text-xs text-primary -mt-1 tracking-widest">Mjellma's Cake</span>
               </div>
             </div>
             <p className="text-sm opacity-80 mb-4">
@@ -94,17 +94,28 @@ function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2">
                 <FaMapMarkerAlt className="mt-1 text-primary" />
-                <span>Rruga Nëna Terezë, Nr. 10<br />Prishtinë, Kosovë</span>
+                <span>Rame Avdyli<br />Pozharanjë, Kosovë</span>
               </li>
               <li className="flex items-center gap-2">
                 <FaPhone className="text-primary" />
-                <span>+383 44 123 456</span>
+                <span>044 958 935</span>
               </li>
               <li className="flex items-center gap-2">
                 <FaClock className="text-primary" />
                 <span>E Hënë - E Shtunë: 08:00 - 20:00</span>
               </li>
             </ul>
+            <div className="mt-4 rounded-lg overflow-hidden">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2942.123456!2d21.0!3d42.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDLCsDM2JzAwLjAiTiAyMcKwMDAnMDAuMCJF!5e0!3m2!1sen!2s!4v1234567890"
+                width="100%" 
+                height="120" 
+                style={{ border: 0 }} 
+                allowFullScreen="" 
+                loading="lazy"
+                title="Lokacioni - Pozharanjë"
+              ></iframe>
+            </div>
           </div>
         </div>
 

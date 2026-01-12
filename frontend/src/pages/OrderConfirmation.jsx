@@ -139,7 +139,7 @@ function OrderConfirmation() {
             <FaInfoCircle className="inline-block mr-2" />
             <strong>Çfarë ndodh tani?</strong><br />
             Do të kontaktoheni brenda 1-2 orëve për të konfirmuar porosinë tuaj. 
-            Nëse keni pyetje, mund të na telefononi në <strong>+383 44 123 456</strong>.
+            Nëse keni pyetje, mund të na telefononi në <strong>044 958 935</strong>.
           </div>
 
           

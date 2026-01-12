@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FaCreditCard, FaUser, FaTruck, FaWallet, FaMoneyBillWave, FaUniversity, FaLock, FaPhone, FaShoppingBag } from 'react-icons/fa'
+import { FaCreditCard, FaUser, FaTruck, FaWallet, FaMoneyBillWave, FaLock, FaPhone, FaShoppingBag } from 'react-icons/fa'
 import { useCart } from '../context/CartContext'
 
 function Checkout() {
@@ -203,30 +203,13 @@ function Checkout() {
                 </h3>
 
                 <div className="space-y-4">
-                  <label className="flex items-center gap-3 p-4 border-2 rounded-xl cursor-pointer hover:border-primary transition-colors">
-                    <input
-                      type="radio"
-                      name="payment"
-                      value="cash"
-                      checked={formData.payment === 'cash'}
-                      onChange={handleChange}
-                      className="w-5 h-5 text-primary"
-                    />
+                  <label className="flex items-center gap-3 p-4 border-2 border-primary bg-primary/10 rounded-xl">
                     <FaMoneyBillWave className="text-2xl text-green-500" />
                     <span className="font-medium">Pagesë me Para në Dorë (Cash on Delivery)</span>
                   </label>
-                  <label className="flex items-center gap-3 p-4 border-2 rounded-xl cursor-pointer hover:border-primary transition-colors">
-                    <input
-                      type="radio"
-                      name="payment"
-                      value="bank"
-                      checked={formData.payment === 'bank'}
-                      onChange={handleChange}
-                      className="w-5 h-5 text-primary"
-                    />
-                    <FaUniversity className="text-2xl text-blue-500" />
-                    <span className="font-medium">Transfer Bankar</span>
-                  </label>
+                  <p className="text-gray-500 text-sm">
+                    Pagesa bëhet në momentin e marrjes së porosisë.
+                  </p>
                 </div>
               </div>
 
@@ -297,7 +280,7 @@ function Checkout() {
                 </div>
                 <div className="flex items-center gap-2 text-sm mt-2">
                   <FaPhone className="text-primary" />
-                  <span>Pyetje? +383 44 123 456</span>
+                  <span>Pyetje? 044 958 935</span>
                 </div>
               </div>
             </div>

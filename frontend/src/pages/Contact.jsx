@@ -156,7 +156,7 @@ function Contact() {
                   </div>
                   <div>
                     <h5 className="font-semibold text-lg">Adresa</h5>
-                    <p className="text-gray-500">Rruga Nëna Terezë, Nr. 10<br />Prishtinë, Kosovë</p>
+                    <p className="text-gray-500">Rame Avdyli<br />Pozharanjë, Kosovë</p>
                   </div>
                 </div>
 
@@ -167,8 +167,7 @@ function Contact() {
                   <div>
                     <h5 className="font-semibold text-lg">Telefoni</h5>
                     <p className="text-gray-500">
-                      <a href="tel:+38344123456" className="hover:text-primary">+383 44 123 456</a><br />
-                      <a href="tel:+38338234567" className="hover:text-primary">+383 38 234 567</a>
+                      <a href="tel:+38344958935" className="hover:text-primary">044 958 935</a>
                     </p>
                   </div>
                 </div>
@@ -214,12 +213,13 @@ function Contact() {
         <div className="mt-12">
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2934.4714458076896!2d21.1594!3d42.6629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13549ee605110927%3A0x9365bfdf385eb95a!2sPrishtina%2C%20Kosovo!5e0!3m2!1sen!2s!4v1640000000000!5m2!1sen!2s"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11739.5!2d21.1!3d42.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13549e7b7c8a4a1f%3A0x1234567890abcdef!2sPozharanj%C3%AB%2C%20Kosovo!5e0!3m2!1sen!2s!4v1640000000000!5m2!1sen!2s"
               className="w-full h-80"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              title="Lokacioni - Pozharanjë, Kosovë"
             />
           </div>
         </div>
