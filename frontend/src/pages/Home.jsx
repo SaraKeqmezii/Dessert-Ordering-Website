@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { FaShoppingBag, FaPhone, FaTruck, FaLeaf, FaPaintBrush, FaCheckCircle, FaStar, FaArrowRight } from 'react-icons/fa'
+import { FaShoppingBag, FaPhone, FaTruck, FaLeaf, FaPaintBrush, FaArrowRight } from 'react-icons/fa'
 import ProductCard from '../components/ProductCard'
 
 const featuredProducts = [
@@ -34,27 +34,6 @@ const featuredProducts = [
     price: 8,
     image: "https://images.unsplash.com/photo-1598110750624-207050c4f28c?w=400",
     category: "tradicionale"
-  }
-]
-
-const testimonials = [
-  {
-    name: "Maria K.",
-    location: "Prishtinë",
-    text: "Torta e çokollatës ishte thjesht fantastike! E gjithë familja e pëlqeu shumë. Faleminderit!",
-    rating: 5
-  },
-  {
-    name: "Elton H.",
-    location: "Ferizaj",
-    text: "Porositëm tortën për ditëlindje dhe erdhi pikërisht siç e dëshironim. Shërbim i shkëlqyer!",
-    rating: 5
-  },
-  {
-    name: "Ardita B.",
-    location: "Prishtinë",
-    text: "Bakllava e tyre është më e mira që kam provuar! Shije tradicionale dhe autentike.",
-    rating: 5
   }
 ]
 
@@ -132,81 +111,6 @@ function Home() {
             <Link to="/products" className="btn-primary text-lg inline-flex items-center gap-2">
               Shiko të Gjitha Produktet <FaArrowRight />
             </Link>
-          </div>
-        </div>
-      </section>
-
-      
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <img 
-                src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=800" 
-                alt="Baker"
-                className="rounded-3xl shadow-xl"
-              />
-            </div>
-            <div>
-              <h2 className="font-display text-4xl font-bold mb-6">Pse të Zgjidhni Ne?</h2>
-              <div className="space-y-6">
-                <div className="flex gap-4">
-                  <FaCheckCircle className="text-2xl text-primary flex-shrink-0 mt-1" />
-                  <div>
-                    <h5 className="font-semibold text-lg mb-1">Përvojë mbi 5 Vjet</h5>
-                    <p className="text-gray-500">Kemi përvojë të gjatë në krijimin e ëmbëlsirave të shijshme.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <FaCheckCircle className="text-2xl text-primary flex-shrink-0 mt-1" />
-                  <div>
-                    <h5 className="font-semibold text-lg mb-1">Receta Origjinale</h5>
-                    <p className="text-gray-500">Përdorim receta familjare dhe të reja për një shije unike.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <FaCheckCircle className="text-2xl text-primary flex-shrink-0 mt-1" />
-                  <div>
-                    <h5 className="font-semibold text-lg mb-1">Dërgim i Sigurt</h5>
-                    <p className="text-gray-500">Paketojmë me kujdes për të garantuar cilësinë e produktit.</p>
-                  </div>
-                </div>
-              </div>
-              <Link to="/about" className="btn-primary mt-8 inline-flex items-center gap-2">
-                Mëso Më Shumë <FaArrowRight />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="section-title">
-            <h2>Çfarë Thonë Klientët</h2>
-            <div className="divider"></div>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white p-6 rounded-2xl shadow-lg">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <FaStar key={i} className="text-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-4">"{testimonial.text}"</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary text-white rounded-full flex items-center justify-center font-bold">
-                    {testimonial.name.split(' ').map(n => n[0]).join('')}
-                  </div>
-                  <div>
-                    <h6 className="font-semibold">{testimonial.name}</h6>
-                    <span className="text-sm text-gray-500">{testimonial.location}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>

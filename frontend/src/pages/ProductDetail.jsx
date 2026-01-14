@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
-import { useParams, Link, useNavigate } from 'react-router-dom'
-import { FaCartPlus, FaArrowLeft, FaShoppingCart, FaCheckCircle, FaTruck, FaClock, FaMapMarkerAlt, FaMinus, FaPlus } from 'react-icons/fa'
-import { useCart } from '../context/CartContext'
+import { useParams, Link } from 'react-router-dom'
+import { FaPhone, FaCheckCircle, FaTruck, FaClock, FaMapMarkerAlt } from 'react-icons/fa'
 
 const defaultProducts = [
   {
@@ -79,10 +78,6 @@ const categoryLabels = {
 
 function ProductDetail() {
   const { id } = useParams()
-  const navigate = useNavigate()
-  const { addToCart } = useCart()
-  const [quantity, setQuantity] = useState(1)
-  const [added, setAdded] = useState(false)
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(true)
 
@@ -109,12 +104,6 @@ function ProductDetail() {
         <Link to="/products" className="btn-primary">Kthehu te Produktet</Link>
       </div>
     )
-  }
-
-  const handleAddToCart = () => {
-    addToCart(product, quantity)
-    setAdded(true)
-    setTimeout(() => setAdded(false), 2000)
   }
 
   return (
@@ -169,54 +158,12 @@ function ProductDetail() {
           </div>
 
           
-          <div className="flex flex-col sm:flex-row gap-4 mb-8">
-            <div className="flex items-center gap-4">
-              <span className="font-semibold">Sasia:</span>
-              <div className="flex items-center gap-2">
-                <button 
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="w-10 h-10 rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors flex items-center justify-center"
-                >
-                  <FaMinus />
-                </button>
-                <span className="w-12 text-center text-xl font-semibold">{quantity}</span>
-                <button 
-                  onClick={() => setQuantity(Math.min(10, quantity + 1))}
-                  className="w-10 h-10 rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors flex items-center justify-center"
-                >
-                  <FaPlus />
-                </button>
-              </div>
-            </div>
-            <button 
-              onClick={handleAddToCart}
-              className={`flex-1 py-4 rounded-full font-semibold text-lg flex items-center justify-center gap-2 transition-all ${
-                added 
-                  ? 'bg-green-500 text-white' 
-                  : 'bg-gradient-to-r from-primary to-secondary text-white hover:shadow-lg'
-              }`}
-            >
-              {added ? (
-                <>
-                  <FaCheckCircle /> U Shtua!
-                </>
-              ) : (
-                <>
-                  <FaCartPlus /> Shto në Shportë
-                </>
-              )}
-            </button>
-          </div>
-
-          
-          <div className="flex flex-wrap gap-4 mb-8">
-            <Link to="/products" className="btn-outline flex items-center gap-2">
-              <FaArrowLeft /> Kthehu te Produktet
-            </Link>
-            <Link to="/cart" className="btn-outline flex items-center gap-2">
-              <FaShoppingCart /> Shiko Shportën
-            </Link>
-          </div>
+          <a 
+            href="tel:044958935"
+            className="w-full py-4 rounded-full font-semibold text-lg flex items-center justify-center gap-3 bg-gradient-to-r from-primary to-secondary text-white hover:shadow-lg transition-all mb-8"
+          >
+            <FaPhone /> Porosit Tani
+          </a>
 
           
           <div className="bg-light p-6 rounded-2xl">

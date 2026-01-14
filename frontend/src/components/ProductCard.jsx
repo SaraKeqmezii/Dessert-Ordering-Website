@@ -1,20 +1,12 @@
 import { Link } from 'react-router-dom'
-import { FaCartPlus, FaEye } from 'react-icons/fa'
-import { useCart } from '../context/CartContext'
+import { FaEye } from 'react-icons/fa'
 
 function ProductCard({ product }) {
-  const { addToCart } = useCart()
-
   const categoryLabels = {
     torta: 'Tortë',
     cupcakes: 'Cupcakes',
     biskota: 'Biskota',
     tradicionale: 'Tradicionale'
-  }
-
-  const handleAddToCart = (e) => {
-    e.preventDefault()
-    addToCart(product)
   }
 
   return (
@@ -43,20 +35,12 @@ function ProductCard({ product }) {
             €{product.price}
           </span>
         </div>
-        <div className="flex gap-2">
-          <Link 
-            to={`/product/${product.id}`}
-            className="flex-1 btn-outline text-center text-sm py-2 flex items-center justify-center gap-2"
-          >
-            <FaEye /> Shiko
-          </Link>
-          <button 
-            onClick={handleAddToCart}
-            className="flex-1 btn-primary text-sm py-2 flex items-center justify-center gap-2"
-          >
-            <FaCartPlus /> Shto
-          </button>
-        </div>
+        <Link 
+          to={`/product/${product.id}`}
+          className="w-full btn-primary text-center text-sm py-2 flex items-center justify-center gap-2"
+        >
+          <FaEye /> Shiko
+        </Link>
       </div>
     </div>
   )

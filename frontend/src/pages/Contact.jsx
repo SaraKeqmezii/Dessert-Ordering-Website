@@ -1,24 +1,5 @@
 import { useState } from 'react'
-import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaClock, FaFacebookF, FaInstagram, FaWhatsapp, FaTiktok, FaPaperPlane, FaChevronDown, FaChevronUp } from 'react-icons/fa'
-
-const faqs = [
-  {
-    question: "Sa kohë përpara duhet të porosis?",
-    answer: "Rekomandojmë të porosisni së paku 24-48 orë përpara, veçanërisht për tortat e personalizuara. Për ngjarje të mëdha si dasma, rekomandojmë 1-2 javë përpara."
-  },
-  {
-    question: "A bëni dërgim jashtë Prishtinës?",
-    answer: "Po, bëjmë dërgim në Ferizaj, Mitrovicë, Gjilan dhe qytete të tjera pranë Prishtinës. Tarifat e dërgimit varen nga distanca. Na kontaktoni për detaje."
-  },
-  {
-    question: "A mund të bëj një tortë të personalizuar?",
-    answer: "Sigurisht! Specializohemi në torta të personalizuara për ditëlindje, dasma, dhe çdo rast tjetër special. Na dërgoni idenë tuaj dhe ne do ta realizojmë!"
-  },
-  {
-    question: "Cilat janë metodat e pagesës?",
-    answer: "Pranojmë pagesë cash në dorëzim (Cash on Delivery) dhe transfer bankar. Për porosi të mëdha, kërkojmë një paradhënie 50%."
-  }
-]
+import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaClock, FaFacebookF, FaInstagram, FaWhatsapp, FaTiktok, FaPaperPlane } from 'react-icons/fa'
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -29,7 +10,6 @@ function Contact() {
     message: ''
   })
   const [submitted, setSubmitted] = useState(false)
-  const [openFaq, setOpenFaq] = useState(0)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -221,33 +201,6 @@ function Contact() {
               referrerPolicy="no-referrer-when-downgrade"
               title="Lokacioni - Pozharanjë, Kosovë"
             />
-          </div>
-        </div>
-
-        
-        <div className="mt-16">
-          <div className="section-title">
-            <h2>Pyetje të Shpeshta</h2>
-            <div className="divider"></div>
-          </div>
-
-          <div className="max-w-3xl mx-auto mt-8 space-y-4">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-md overflow-hidden">
-                <button
-                  onClick={() => setOpenFaq(openFaq === index ? -1 : index)}
-                  className="w-full px-6 py-4 text-left font-semibold flex justify-between items-center hover:bg-gray-50 transition-colors"
-                >
-                  {faq.question}
-                  {openFaq === index ? <FaChevronUp className="text-primary" /> : <FaChevronDown className="text-gray-400" />}
-                </button>
-                {openFaq === index && (
-                  <div className="px-6 py-4 bg-gray-50 text-gray-600">
-                    {faq.answer}
-                  </div>
-                )}
-              </div>
-            ))}
           </div>
         </div>
       </div>
